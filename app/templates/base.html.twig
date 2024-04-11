@@ -14,10 +14,10 @@
         {% endblock %}
     </head>
     <body>
-        <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }})">
+        <header class="site-header">
             <span class="site-title">My Symfony Site</span>
         </header>
-        <nav>
+        <nav class="main-navbar">
             <ul>
                 <li><a href="{{ path('homepage') }}">Homepage</a></li>
                 <li><a href="{{ path('about') }}">About</a></li>
@@ -28,5 +28,9 @@
             </ul>
         </nav>
         {% block body %}{% endblock %}
+
+        <footer class="main-footer">
+            <p>&copy; {{ currentYear }} Tim's symfony sida. All rights reserved.</p>
+        </footer>
     </body>
 </html>

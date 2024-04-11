@@ -19,3 +19,57 @@ body {
 .lucky-div-kmom01 {
     background-color: steelblue;
 }
+
+.site-header {
+    background-color: black;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    font-size: 26px;
+}
+
+.site-title {
+    color: white;
+}
+
+.main-navbar {
+    background-color: black;
+
+}
+
+.main-navbar li {
+    list-style: none;
+    padding: 5px;
+    padding: 0;
+}
+
+.main-navbar li a {
+    text-decoration: none;
+    color: white;
+    padding: 0.7rem;
+    display: block;
+}
+
+.main-navbar ul {
+    padding: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0px;
+    margin: 0;
+    text-align: center;
+}
+
+.main-footer {
+    background-color: black;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+}
+
+.main-footer p {
+    color: white;
+    margin: 0;
+}
+

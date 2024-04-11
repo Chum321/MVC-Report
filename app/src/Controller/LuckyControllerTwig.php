@@ -11,10 +11,12 @@ class LuckyControllerTwig extends AbstractController
     #[Route("/lucky/number/twig", name: "lucky_number")]
     public function number(): Response
     {
+        $currentYear = date('Y');
         $number = random_int(0, 100);
 
         $data = [
-            'number' => $number
+            'number' => $number,
+            'currentYear' => $currentYear,
         ];
 
         return $this->render('lucky_number.html.twig', $data);
@@ -23,25 +25,37 @@ class LuckyControllerTwig extends AbstractController
     #[Route("/home", name: "home")]
     public function home(): Response
     {
-        return $this->render('home.html.twig');
+        $currentYear = date('Y');
+        return $this->render('home.html.twig', [
+            'currentYear' => $currentYear,
+        ]);
     }
 
     #[Route("/about", name: "about")]
     public function about(): Response
     {
-        return $this->render('about.html.twig');
+        $currentYear = date('Y');
+        return $this->render('about.html.twig', [
+            'currentYear' => $currentYear,
+        ]);
     }
 
     #[Route("/report", name: "report")]
     public function report(): Response
     {
-        return $this->render('report.html.twig');
+        $currentYear = date('Y');
+        return $this->render('report.html.twig', [
+            'currentYear' => $currentYear,
+        ]);
     }
 
     #[Route("/", name: "homepage")]
     public function homepage(): Response
     {
-        return $this->render('index.html.twig');
+        $currentYear = date('Y');
+        return $this->render('index.html.twig', [
+            'currentYear' => $currentYear,
+        ]);
     }
 
     #[Route("/lucky", name: "lucky")]
@@ -52,12 +66,14 @@ class LuckyControllerTwig extends AbstractController
             'img/Sun.jpg',
             'img/Black-hole.jpg',
         ];
+        $currentYear = date('Y');
 
         $randomImage = $images[array_rand($images)];
 
         return $this->render('lucky.html.twig', [
             'luckyNumber' => $luckyNumber,
             'randomImage' => $randomImage,
+            'currentYear' => $currentYear,
         ]);
     }
 }
