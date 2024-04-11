@@ -31,4 +31,33 @@ class LuckyControllerTwig extends AbstractController
     {
         return $this->render('about.html.twig');
     }
+
+    #[Route("/report", name: "report")]
+    public function report(): Response
+    {
+        return $this->render('report.html.twig');
+    }
+
+    #[Route("/", name: "homepage")]
+    public function homepage(): Response
+    {
+        return $this->render('index.html.twig');
+    }
+
+    #[Route("/lucky", name: "lucky")]
+    public function lucky(): Response
+    {
+        $luckyNumber = random_int(0, 100);
+        $images = [
+            'img/Sun.jpg',
+            'img/Black-hole.jpg',
+        ];
+
+        $randomImage = $images[array_rand($images)];
+
+        return $this->render('lucky.html.twig', [
+            'luckyNumber' => $luckyNumber,
+            'randomImage' => $randomImage,
+        ]);
+    }
 }

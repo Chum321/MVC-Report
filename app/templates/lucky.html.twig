@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Lucky Page{% endblock %}
+
+{% block body %}
+<div class="lucky-div-kmom01">
+    <h1>Lucky Page</h1>
+    <p>Your lucky number is: {{ luckyNumber }}</p>
+    
+    <h2>Crazy Image</h2>
+    <img src="{{ randomImage }}" alt="Crazy Image" class="img-lucky-kmom01">
+    <p>There are multiple images (2) so keep reloading if you only seen one!</p>
+</div>
+{% endblock %}

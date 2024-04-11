@@ -11,3 +11,11 @@ body {
     background: url('../images/background.jpg');
     background-size: cover;
 }
+
+.img-lucky-kmom01 {
+    max-width: 100%;
+}
+
+.lucky-div-kmom01 {
+    background-color: steelblue;
+}
