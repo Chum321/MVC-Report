@@ -8,8 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyControllerJson
 {
-    #[Route("/api/lucky/number")]
-    public function jsonNumber(): Response
+    #[Route("/api/lucky/number", name: "api_lucky_numbers")]
+    public function jsonNumber(): JsonResponse
     {
         $number = random_int(0, 100);
 

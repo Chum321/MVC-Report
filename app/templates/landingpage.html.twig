@@ -1,0 +1,15 @@
+{# templates/landing.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block title %}API Landing Page{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the API Landing Page</h1>
+    <h2>Available JSON Routes:</h2>
+    <ul>
+        {% for route in jsonRoutes %}
+            <li>{{ route.name }}: {{ route.path }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

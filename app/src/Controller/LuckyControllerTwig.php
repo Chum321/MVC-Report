@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LuckyControllerTwig extends AbstractController
 {
@@ -75,5 +77,68 @@ class LuckyControllerTwig extends AbstractController
             'randomImage' => $randomImage,
             'currentYear' => $currentYear,
         ]);
+    }
+
+    #[Route("/api/", name: "api_landing")]
+    public function apiLanding(RouterInterface $router): Response
+    {
+        $currentYear = date('Y');
+        
+        // Get all routes
+        $routes = $router->getRouteCollection()->all();
+        
+        // Filter JSON routes
+        $jsonRoutes = [];
+
+        foreach ($routes as $name => $route) {
+            // Check if the route path starts with '/api/'
+            if (strpos($route->getPath(), '/api/') === 0 && $this->isJsonRoute($route)) {
+                $jsonRoutes[] = [
+                    'name' => $name,
+                    'path' => $route->getPath(),
+                ];
+            }
+        }
+
+        return $this->render('landingpage.html.twig', [
+            'jsonRoutes' => $jsonRoutes,
+            'currentYear' => $currentYear,
+        ]);
+    }
+
+    private function isJsonRoute($route): bool
+    {
+        $controller = $route->getDefault('_controller');
+        if (is_string($controller) && strpos($controller, '::') !== false) {
+            [$controllerClass, $controllerMethod] = explode('::', $controller);
+            $reflectionMethod = new \ReflectionMethod($controllerClass, $controllerMethod);
+            $returnType = $reflectionMethod->getReturnType();
+            return $returnType && $returnType->getName() === JsonResponse::class;
+        }
+        return false;
+    }
+
+    #[Route("/api/quote", name: "api_quote")]
+    public function apiQuote(): JsonResponse
+    {
+        $quotes = [
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "In the midst of chaos, there is also opportunity. - Sun Tzu",
+            "These quotes was not taken from chatgpt 3.5, totes not."
+        ];
+
+        // Selects a random quote
+        $randomQuote = $quotes[array_rand($quotes)];
+
+        $date = date("Y-m-d");
+        $timestamp = time();
+
+        $response = new JsonResponse([
+            'quote' => $randomQuote,
+            'date' => $date,
+            'timestamp' => $timestamp
+        ]);
+
+        return $response;
     }
 }
