@@ -28,7 +28,9 @@
                 <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
             </ul>
         </nav>
-        {% block body %}{% endblock %}
+        <div class="site-content">
+            {% block body %}{% endblock %}
+        </div>
 
         <footer class="main-footer">
             <p>&copy; {{ currentYear }} Tim's symfony sida. All rights reserved.</p>

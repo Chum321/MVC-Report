@@ -3,10 +3,17 @@
 {% block title %}About{% endblock %}
 
 {% block body %}
-    <h1>About</h1>
-    <p>An image which can be clicked on.</p>
+    <h1 class="centered">About</h1>
+    <p class="centered">An image which can be clicked on.</p>
     <a href="{{ asset('img/glider.svg') }}">
         <img src="{{ asset('img/glider.svg') }}" alt="">
     </a>
+    <br>
+    <ul class="centered">
+        <a href="https://github.com/Chum321/MVC-Report">Mitt github repo</a>
+        <br>
+        <a href="https://github.com/dbwebb-se/mvc/tree/main/example/symfony">Kursens github repo</a>
+    </ul>
+    <br>
     <img src="{{ asset('build/images/background.jpg') }}" alt="">
 {% endblock %}
