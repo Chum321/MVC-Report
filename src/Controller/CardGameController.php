@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Cardgame\DeckOfCards;
+use App\Cardgame\CardHand;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,9 +39,14 @@ class CardGameController extends AbstractController
     #[Route("/card/deck", name: "deck_page")]
     public function deck(): Response
     {
+        $deck = new DeckOfCards();
+        $cards = $deck->getCards();
+
+        
         $currentYear = date('Y');
         return $this->render('card/card_deck.html.twig', [
             'currentYear' => $currentYear,
+            'cards' => $cards,
         ]);
     }
 
@@ -46,8 +54,14 @@ class CardGameController extends AbstractController
     public function shuffle(): Response
     {
         $currentYear = date('Y');
+
+        $deck = new DeckOfCards();
+        $deck->shuffle();
+        $shuffledCards = $deck->getCards();
+
         return $this->render('card/card_shuffle.html.twig', [
             'currentYear' => $currentYear,
+            'shuffledCards' => $shuffledCards,
         ]);
     }
 
@@ -55,8 +69,47 @@ class CardGameController extends AbstractController
     public function draw(): Response
     {
         $currentYear = date('Y');
+
+        $hand = new CardHand();
+        $deck = new DeckOfCards();
+        $deck->shuffle();
+
+        $numCardsToDraw = 5; // Set the number of cards to draw
+        
+        for ($i = 0; $i < $numCardsToDraw; $i++) {
+            $hand->drawCardFromDeck($deck); // draws cards from the deck
+        }
+        $shuffledDeck = $deck->getCards();
+        
+        $handCards = $hand->getCards();
+
         return $this->render('card/card_draw.html.twig', [
             'currentYear' => $currentYear,
+            'handCards' => $handCards,
+            'shuffledDeck' => $shuffledDeck,
+        ]);
+    }
+
+    #[Route("/card/deck/draw/{numCardsToDraw<\d+>}", name: "draw_page_number")]
+    public function drawamount(Request $request, int $numCardsToDraw): Response
+    {
+        $currentYear = date('Y');
+
+        $hand = new CardHand();
+        $deck = new DeckOfCards();
+        $deck->shuffle();
+        
+        for ($i = 0; $i < $numCardsToDraw; $i++) {
+            $hand->drawCardFromDeck($deck); // draws cards from the deck
+        }
+
+        $shuffledDeck = $deck->getCards();
+        $handCards = $hand->getCards();
+
+        return $this->render('card/card_draw.html.twig', [
+            'currentYear' => $currentYear,
+            'handCards' => $handCards,
+            'shuffledDeck' => $shuffledDeck,
         ]);
     }
 }

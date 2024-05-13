@@ -1,0 +1,21 @@
+{# templates/card_game/deck.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Deck of Cards{% endblock %}
+
+{% block body %}
+    <h1>Deck of Cards</h1>
+    <div class="card-container">
+        <h1>what is in hand</h1>
+        {% for card in handCards %}
+            <div class="card">{{ card }}</div>
+        {% endfor %}
+
+        <h1>What is left in deck</h1>
+
+        {% for card in shuffledDeck %}
+            <div class="card">{{ card }}</div>
+        {% endfor %}
+    </div>
+{% endblock %}

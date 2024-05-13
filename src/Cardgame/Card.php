@@ -7,8 +7,8 @@ namespace App\Cardgame;
  */
 class Card
 {
-    private $suit;
-    private $rank;
+    private string $suit;
+    private string $rank;
 
     /**
      * Constructor.
@@ -16,7 +16,7 @@ class Card
      * @param string $rank The rank of the card.
      * @param string $suit The suit of the card.
      */
-    public function __construct($suit, $rank, $value)
+    public function __construct($suit, $rank)
     {
         $this->suit = $suit;
         $this->rank = $rank;
@@ -67,10 +67,9 @@ class Card
      *
      * @return string The string representation of the card.
      */
-    public function displayCard()
+    public function __toString(): string
     {
-        $cardName = $this->rank . ' of ' . $this->suit;
-        return $cardName;
+        return $this->rank . ' of ' . $this->suit;
     }
 
 }
