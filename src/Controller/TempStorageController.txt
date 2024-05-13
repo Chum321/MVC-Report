@@ -1,10 +1,9 @@
-<?php
+
 
 namespace App\Controller;
 
 use App\Cardgame\DeckOfCards;
 use App\Cardgame\CardHand;
-use App\Cardgame\SessionDeckOfCards;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,44 +51,37 @@ class CardGameController extends AbstractController
     }
 
     #[Route("/card/deck/shuffle", name: "shuffle_page")]
-    public function shuffle(Request $request, SessionDeckOfCards $deck): Response
+    public function shuffle(): Response
     {
         $currentYear = date('Y');
 
-        
-        // $deck = new DeckOfCards();
+        $deck = new DeckOfCards();
         $deck->shuffle();
-        // Save the shuffled deck to the session
-        $deck->saveToSession($request->getSession());
         $shuffledCards = $deck->getCards();
-        
+
         return $this->render('card/card_shuffle.html.twig', [
             'currentYear' => $currentYear,
             'shuffledCards' => $shuffledCards,
         ]);
     }
-    
+
     #[Route("/card/deck/draw", name: "draw_page")]
-    public function draw(Request $request): Response
+    public function draw(): Response
     {
         $currentYear = date('Y');
-        $deck = SessionDeckOfCards::loadFromSession($request->getSession());
 
         $hand = new CardHand();
-        // $deck = new DeckOfCards();
-        // $deck->shuffle();
+        $deck = new DeckOfCards();
+        $deck->shuffle();
 
-        
-        $numCardsToDraw = 1; // Set the number of cards to draw
+        $numCardsToDraw = 5; // Set the number of cards to draw
         
         for ($i = 0; $i < $numCardsToDraw; $i++) {
             $hand->drawCardFromDeck($deck); // draws cards from the deck
         }
-
         $shuffledDeck = $deck->getCards();
+        
         $handCards = $hand->getCards();
-        // Save the updated deck to the session
-        $deck->saveToSession($request->getSession());
 
         return $this->render('card/card_draw.html.twig', [
             'currentYear' => $currentYear,
@@ -104,9 +96,8 @@ class CardGameController extends AbstractController
         $currentYear = date('Y');
 
         $hand = new CardHand();
-        // $deck = new DeckOfCards();
-        // $deck->shuffle();
-        $deck = SessionDeckOfCards::loadFromSession($request->getSession());
+        $deck = new DeckOfCards();
+        $deck->shuffle();
         
         for ($i = 0; $i < $numCardsToDraw; $i++) {
             $hand->drawCardFromDeck($deck); // draws cards from the deck
@@ -114,8 +105,6 @@ class CardGameController extends AbstractController
 
         $shuffledDeck = $deck->getCards();
         $handCards = $hand->getCards();
-        // Save the updated deck to the session
-        $deck->saveToSession($request->getSession());
 
         return $this->render('card/card_draw.html.twig', [
             'currentYear' => $currentYear,

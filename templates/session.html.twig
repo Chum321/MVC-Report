@@ -1,16 +1,18 @@
 {% extends "base.html.twig" %}
 
-{% block title %}About{% endblock %}
+{% block title %}Session Data{% endblock %}
 
 {% block body %}
-<h1>Session Data</h1>
-    <pre>
-        {{ sessionData | json_encode(constant('JSON_PRETTY_PRINT')) }}
-    </pre>
-    {% for message in app.flashes('success') %}
-    <div class="flash-notice">
-        {{ message }}
-    </div>
-{% endfor %}
+    <h1>Session Data</h1>
+    <ul>
+        {% for key, value in sessionData %}
+            <li><strong>{{ key }}</strong>: {{ value }}</li>
+        {% endfor %}
+    </ul>
 
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
 {% endblock %}

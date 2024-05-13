@@ -9,8 +9,7 @@ namespace App\Cardgame;
  */
 class DeckOfCards
 {
-    private const SESSION_KEY = 'deck_of_cards';
-    private array $cards = [];
+    protected array $cards = [];
 
     public function __construct()
     {
