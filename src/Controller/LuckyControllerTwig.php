@@ -118,5 +118,5 @@ class LuckyControllerTwig extends AbstractController
         return false;
     }
 
-    
+
 }
