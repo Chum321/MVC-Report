@@ -30,7 +30,7 @@ class SessionDeckOfCards extends DeckOfCards
 
         $deck = new self();
         $deck->cards = unserialize($cards);
-        
+
         return $deck;
     }
 }

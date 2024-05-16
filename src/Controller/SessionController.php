@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,12 +13,13 @@ class SessionController extends AbstractController
 {
     /**
      * @Route("/session", name="session_info")
-     * 
+     *
      * displays session data
      */
     #[Route("/session", name: "session_info")]
     public function showSession(Request $request): Response
     {
+
         $currentYear = date('Y');
 
         $sessionData = $request->getSession()->all();
@@ -31,12 +33,13 @@ class SessionController extends AbstractController
 
     /**
      * @Route("/session/delete", name="delete_session_contents")
-     * 
+     *
      * deletes session data
      */
     #[Route("/session/delete", name: "delete_session_contents")]
     public function deleteSessionContents(SessionInterface $session): Response
     {
+
         $session->clear(); // Clears all session data
 
         // a flash message to notify the user

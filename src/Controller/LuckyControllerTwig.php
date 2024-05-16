@@ -83,10 +83,10 @@ class LuckyControllerTwig extends AbstractController
     public function apiLanding(RouterInterface $router): Response
     {
         $currentYear = date('Y');
-        
+
         // Get all routes
         $routes = $router->getRouteCollection()->all();
-        
+
         // Filter JSON routes
         $jsonRoutes = [];
 
@@ -117,6 +117,5 @@ class LuckyControllerTwig extends AbstractController
         }
         return false;
     }
-
 
 }

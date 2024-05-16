@@ -119,3 +119,88 @@ body {
 .flash-warning:before {
     content: "⚠";
 }
+
+.card {
+    background-image: url('../images/1024px-English_pattern_playing_cards_deck.svg.png');
+}
+
+.card-utf8 {
+    font-size: 96px;
+}
+
+/**
+ * Style a card using UTF-8 characters.
+ *
+ * Suit spades.
+ */
+.card-utf8 .spades-ace::after { content: "\1F0A1"; }
+.card-utf8 .spades-2::after { content: "\1F0A2"; }
+.card-utf8 .spades-3::after { content: "\1F0A3"; }
+.card-utf8 .spades-4::after { content: "\1F0A4"; }
+.card-utf8 .spades-5::after { content: "\1F0A5"; }
+.card-utf8 .spades-6::after { content: "\1F0A6"; }
+.card-utf8 .spades-7::after { content: "\1F0A7"; }
+.card-utf8 .spades-8::after { content: "\1F0A8"; }
+.card-utf8 .spades-9::after { content: "\1F0A9"; }
+.card-utf8 .spades-10::after { content: "\1F0AA"; }
+.card-utf8 .spades-jack::after { content: "\1F0AC"; }
+.card-utf8 .spades-queen::after { content: "\1F0AD"; }
+.card-utf8 .spades-king::after { content: "\1F0AE"; }
+
+/**
+ * Style a card using UTF-8 characters.
+ *
+ * Suit hearts.
+ */
+.card-utf8 .hearts-ace::after { content: "\1F0B1"; }
+.card-utf8 .hearts-2::after { content: "\1F0B2"; }
+.card-utf8 .hearts-3::after { content: "\1F0B3"; }
+.card-utf8 .hearts-4::after { content: "\1F0B4"; }
+.card-utf8 .hearts-5::after { content: "\1F0B5"; }
+.card-utf8 .hearts-6::after { content: "\1F0B6"; }
+.card-utf8 .hearts-7::after { content: "\1F0B7"; }
+.card-utf8 .hearts-8::after { content: "\1F0B8"; }
+.card-utf8 .hearts-9::after { content: "\1F0B9"; }
+.card-utf8 .hearts-10::after { content: "\1F0BA"; }
+.card-utf8 .hearts-jack::after { content: "\1F0BC"; }
+.card-utf8 .hearts-queen::after { content: "\1F0BD"; }
+.card-utf8 .hearts-king::after { content: "\1F0BE"; }
+ /**
+ * Style a card using UTF-8 characters.
+ *
+ * Suit diamonds.
+ */
+.card-utf8 .diamonds-ace::after { content: "\1F0C1"; }
+.card-utf8 .diamonds-2::after { content: "\1F0C2"; }
+.card-utf8 .diamonds-3::after { content: "\1F0C3"; }
+.card-utf8 .diamonds-4::after { content: "\1F0C4"; }
+.card-utf8 .diamonds-5::after { content: "\1F0C5"; }
+.card-utf8 .diamonds-6::after { content: "\1F0C6"; }
+.card-utf8 .diamonds-7::after { content: "\1F0C7"; }
+.card-utf8 .diamonds-8::after { content: "\1F0C8"; }
+.card-utf8 .diamonds-9::after { content: "\1F0C9"; }
+.card-utf8 .diamonds-10::after { content: "\1F0CA"; }
+.card-utf8 .diamonds-jack::after { content: "\1F0CC"; }
+.card-utf8 .diamonds-queen::after { content: "\1F0CD"; }
+.card-utf8 .diamonds-king::after { content: "\1F0CE"; }
+/**
+ * Style a card using UTF-8 characters.
+ *
+ * Suit clubs.
+ */
+.card-utf8 .clubs-ace::after { content: "\1F0D1"; }
+.card-utf8 .clubs-2::after { content: "\1F0D2"; }
+.card-utf8 .clubs-3::after { content: "\1F0D3"; }
+.card-utf8 .clubs-4::after { content: "\1F0D4"; }
+.card-utf8 .clubs-5::after { content: "\1F0D5"; }
+.card-utf8 .clubs-6::after { content: "\1F0D6"; }
+.card-utf8 .clubs-7::after { content: "\1F0D7"; }
+.card-utf8 .clubs-8::after { content: "\1F0D8"; }
+.card-utf8 .clubs-9::after { content: "\1F0D9"; }
+.card-utf8 .clubs-10::after { content: "\1F0DA"; }
+.card-utf8 .clubs-jack::after { content: "\1F0DC"; }
+.card-utf8 .clubs-queen::after { content: "\1F0DD"; }
+.card-utf8 .clubs-king::after { content: "\1F0DE"; }
+
+/* ['spades', 'hearts', 'diamonds', 'clubs']; */
+/* ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']; */

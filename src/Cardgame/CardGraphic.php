@@ -31,4 +31,14 @@ class CardGraphic extends Card
     {
         return $this->getGraphic();
     }
+
+    /**
+     * Get a graphic value of the card.
+     *
+     * @return string as graphical representation of the card.
+     */
+    public function graphic(): string
+    {
+        return strtolower($this->getSuit()) . '-' . strtolower($this->getRank());
+    }
 }

@@ -24,13 +24,6 @@ class CardGameController extends AbstractController
     public function landingPage(): Response
     {
 
-        // Check if session exists
-        //code provided by chatgpt for starting session if it is not on, stored here on temp basis
-        // if (!$session->isStarted()) {
-            // Start the session
-        //     $session->start();
-        // }
-
         $currentYear = date('Y');
         return $this->render('card/card_landingpage.html.twig', [
             'currentYear' => $currentYear,
@@ -43,7 +36,7 @@ class CardGameController extends AbstractController
         $deck = new DeckOfCards();
         $cards = $deck->getCards();
 
-        
+
         $currentYear = date('Y');
         return $this->render('card/card_deck.html.twig', [
             'currentYear' => $currentYear,
@@ -56,19 +49,19 @@ class CardGameController extends AbstractController
     {
         $currentYear = date('Y');
 
-        
+
         // $deck = new DeckOfCards();
         $deck->shuffle();
         // Save the shuffled deck to the session
         $deck->saveToSession($request->getSession());
         $shuffledCards = $deck->getCards();
-        
+
         return $this->render('card/card_shuffle.html.twig', [
             'currentYear' => $currentYear,
             'shuffledCards' => $shuffledCards,
         ]);
     }
-    
+
     #[Route("/card/deck/draw", name: "draw_page")]
     public function draw(Request $request): Response
     {
@@ -85,9 +78,9 @@ class CardGameController extends AbstractController
         // $deck = new DeckOfCards();
         // $deck->shuffle();
 
-        
+
         $numCardsToDraw = 1; // Set the number of cards to draw
-        
+
         for ($i = 0; $i < $numCardsToDraw; $i++) {
             $hand->drawCardFromDeck($deck); // draws cards from the deck
         }
@@ -118,7 +111,7 @@ class CardGameController extends AbstractController
             $deck = new SessionDeckOfCards();
         }
         // $deck = SessionDeckOfCards::loadFromSession($request->getSession());
-        
+
         for ($i = 0; $i < $numCardsToDraw; $i++) {
             $hand->drawCardFromDeck($deck); // draws cards from the deck
         }

@@ -6,6 +6,20 @@
 
 {% block body %}
     <h1>Deck of Cards</h1>
+    <h1>what is in hand</h1>
+    <p class="card-utf8">
+        {% for card in handCards %}
+        <i class="{{ card.graphic() }}"></i>
+        {% endfor %}
+    </p>
+
+    <h1>What is left in deck</h1>
+    <p class="card-utf8">
+        {% for card in shuffledDeck %}
+        <i class="{{ card.graphic() }}"></i>
+        {% endfor %}
+    </p>
+
     <div class="card-container">
         <h1>what is in hand</h1>
         {% for card in handCards %}

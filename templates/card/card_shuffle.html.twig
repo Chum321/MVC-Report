@@ -5,10 +5,12 @@
 {% block title %}Deck of Cards{% endblock %}
 
 {% block body %}
-    <h1>Deck of Cards</h1>
-    <div class="card-container">
+<h1>Deck of Cards</h1>
+    <p class="card-utf8">
         {% for card in shuffledCards %}
-            <div class="card">{{ card }}</div>
+        <i class="{{ card.graphic() }}"></i>
         {% endfor %}
-    </div>
+    </p>
 {% endblock %}
+
+
