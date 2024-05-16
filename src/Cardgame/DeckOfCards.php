@@ -18,7 +18,7 @@ class DeckOfCards
 
         foreach ($suits as $suit) {
             foreach ($ranks as $rank) {
-                $this->cards[] = new Card($suit, $rank);
+                $this->cards[] = new CardGraphic($suit, $rank);
             }
         }
     }

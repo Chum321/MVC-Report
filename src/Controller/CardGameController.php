@@ -73,7 +73,13 @@ class CardGameController extends AbstractController
     public function draw(Request $request): Response
     {
         $currentYear = date('Y');
+
         $deck = SessionDeckOfCards::loadFromSession($request->getSession());
+
+        if (!$deck) {
+            $deck = new SessionDeckOfCards();
+        }
+        // $deck = SessionDeckOfCards::loadFromSession($request->getSession());
 
         $hand = new CardHand();
         // $deck = new DeckOfCards();
@@ -107,6 +113,11 @@ class CardGameController extends AbstractController
         // $deck = new DeckOfCards();
         // $deck->shuffle();
         $deck = SessionDeckOfCards::loadFromSession($request->getSession());
+
+        if (!$deck) {
+            $deck = new SessionDeckOfCards();
+        }
+        // $deck = SessionDeckOfCards::loadFromSession($request->getSession());
         
         for ($i = 0; $i < $numCardsToDraw; $i++) {
             $hand->drawCardFromDeck($deck); // draws cards from the deck

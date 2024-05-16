@@ -5,7 +5,7 @@ namespace App\Cardgame;
 /**
  * Represents a playing card.
  */
-class Card
+class Card implements \JsonSerializable
 {
     private string $suit;
     private string $rank;
@@ -70,6 +70,14 @@ class Card
     public function __toString(): string
     {
         return $this->rank . ' of ' . $this->suit;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'suit' => $this->suit,
+            'rank' => $this->rank,
+        ];
     }
 
 }
