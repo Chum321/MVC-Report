@@ -10,6 +10,15 @@
     <ul>
         {% for route in jsonRoutes %}
             <li>{{ route.name }}: {{ route.path }}</li>
+            {{ explanations[loop.index0] }}
+            <br><br>
+        {% endfor %}
+    </ul>
+
+    <h2>Available JSON Route links:</h2>
+    <ul>
+        {% for route in jsonRoutes %}
+            <li><a href="{{ route.path }}">{{ route.name }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

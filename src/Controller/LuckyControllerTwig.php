@@ -93,15 +93,28 @@ class LuckyControllerTwig extends AbstractController
         foreach ($routes as $name => $route) {
             // Check if the route path starts with '/api/'
             if (strpos($route->getPath(), '/api/') === 0 && $this->isJsonRoute($route)) {
+                // Replace dynamic parameters with sample values
+                $path = preg_replace('/\{\w+\}/', '5', $route->getPath());
                 $jsonRoutes[] = [
                     'name' => $name,
-                    'path' => $route->getPath(),
+                    'path' => $path,
                 ];
             }
         }
 
+        // Define explanations for each route
+        $explanations = [
+            'Opening this route returns a deck of cards in a sorted format (does not save to session)',
+            'Shuffle does the same thing as api_deck except it is shuffled and saves to the session',
+            'This page returns a json representation of a had with a card drawn and the remaining deck. the changes to the deck is saved to the session',
+            'Does the same as api_deck_draw except it also requires a /num to be appended to the url. Allowing the user to chose the number of cards drawn.',
+            'Returns a lucky number randomized between 1-100 and a message',
+            'Returns a random quote from a set list and the current date with a timestamp',
+        ];
+
         return $this->render('landingpage.html.twig', [
             'jsonRoutes' => $jsonRoutes,
+            'explanations' => $explanations,
             'currentYear' => $currentYear,
         ]);
     }

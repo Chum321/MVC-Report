@@ -5,6 +5,12 @@
 {% block title %}Deck of Cards{% endblock %}
 
 {% block body %}
+<ul>
+    <li><a href="{{ path('deck_page') }}">Deck of Cards</a></li>
+    <li><a href="{{ path('shuffle_page') }}">Shuffle Deck</a></li>
+    <li><a href="{{ path('draw_page') }}">Draw Card</a></li>
+    <!-- Add more links as needed for other pages -->
+</ul>
     <h1>Deck of Cards</h1>
     <p class="card-utf8">
         {% for card in cards %}
