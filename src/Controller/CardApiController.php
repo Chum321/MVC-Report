@@ -14,7 +14,7 @@ use App\Cardgame\CardHand;
 class CardApiController extends AbstractController
 {
     #[Route("/api/deck", name: "api_deck")]
-    public function getDeck(SessionInterface $session): JsonResponse
+    public function getDeck(): JsonResponse
     {
 
         $deck = new SessionDeckOfCards();
