@@ -32,7 +32,7 @@ class CardApiController extends AbstractController
     }
 
     #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ["POST", "GET"])]
-    public function shuffleDeck(Request $request, SessionInterface $session): JsonResponse
+    public function shuffleDeck(SessionInterface $session): JsonResponse
     {
         $deck = new SessionDeckOfCards();
         $deck->shuffle();
@@ -51,7 +51,7 @@ class CardApiController extends AbstractController
     }
 
     #[Route("/api/deck/draw", name: "api_deck_draw", methods: ["POST", "GET"])]
-    public function drawCard(SessionInterface $session, Request $request): JsonResponse
+    public function drawCard(Request $request): JsonResponse
     {
         $deck = SessionDeckOfCards::loadFromSession($request->getSession());
 
@@ -84,7 +84,7 @@ class CardApiController extends AbstractController
     }
 
     #[Route("/api/deck/draw/{numCardsToDraw<\d+>}", name: "api_deck_draw_number", methods: ["POST", "GET"])]
-    public function drawCards(SessionInterface $session, int $numCardsToDraw, Request $request): JsonResponse
+    public function drawCards(int $numCardsToDraw, Request $request): JsonResponse
     {
         $deck = SessionDeckOfCards::loadFromSession($request->getSession());
 

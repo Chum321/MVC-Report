@@ -37,7 +37,7 @@ class Card implements \JsonSerializable
      *
      * @param string $rank The rank of the card.
      */
-    public function setRank($rank)
+    public function setRank($rank): void
     {
         $this->rank = $rank;
     }
@@ -57,7 +57,7 @@ class Card implements \JsonSerializable
      *
      * @param string $suit The suit of the card.
      */
-    public function setSuit($suit)
+    public function setSuit($suit): void
     {
         $this->suit = $suit;
     }

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use ReflectionMethod;
 
 class LuckyControllerTwig extends AbstractController
 {
@@ -124,7 +125,7 @@ class LuckyControllerTwig extends AbstractController
         $controller = $route->getDefault('_controller');
         if (is_string($controller) && strpos($controller, '::') !== false) {
             [$controllerClass, $controllerMethod] = explode('::', $controller);
-            $reflectionMethod = new \ReflectionMethod($controllerClass, $controllerMethod);
+            $reflectionMethod = new ReflectionMethod($controllerClass, $controllerMethod);
             $returnType = $reflectionMethod->getReturnType();
             return $returnType && $returnType->getName() === JsonResponse::class;
         }
