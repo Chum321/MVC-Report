@@ -5,6 +5,9 @@
 {% block body %}
     <h1>Session Data</h1>
     <ul>
+        <li><a href="{{ path('delete_session_contents') }}">Session Delete</a></li>
+    </ul>
+    <ul>
         {% for key, value in sessionData %}
             <li><strong>{{ key }}</strong>: {{ value }}</li>
         {% endfor %}
