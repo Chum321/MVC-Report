@@ -23,6 +23,14 @@ class SessionController extends AbstractController
         $currentYear = date('Y');
 
         $sessionData = $request->getSession()->all();
+
+        // Serialize complex objects to JSON or other formats if necessary
+    foreach ($sessionData as $key => $value) {
+        if (is_object($value)) {
+            $sessionData[$key] = 'Object of class ' . get_class($value);
+        }
+    }
+
         dump($sessionData); // Dump the session data to check its content
 
         return $this->render('session.html.twig', [

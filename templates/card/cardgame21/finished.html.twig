@@ -1,0 +1,49 @@
+{# templates/game/play.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Play Card Game blackjack{% endblock %}
+
+{% block body %}
+<h1>Card Game blackjack</h1>
+<a href="{{ path('game_draw_card') }}" class="btn btn-primary">Draw a Card</a>
+<a href="{{ path('game_stand') }}" class="btn btn-secondary">Stand</a>
+<a href="{{ path('game_double_down') }}" class="btn btn-primary">double down</a>
+<a href="{{ path('game_reset') }}" class="btn btn-danger">Reset Game</a>
+<br><br>
+{% if not gameFinished %}
+<p>game not marked as finnished</p>
+        <a href="{{ path('game_draw_card') }}" class="btn btn-primary">Draw a Card</a>
+        <a href="{{ path('game_stand') }}" class="btn btn-secondary">Stand</a>
+    {% else %}
+        <p>The game is finished!</p>
+        <a href="{{ path('game_done_screen') }}" class="btn btn-success">Go to Victory Screen</a>
+    {% endif %}
+<p>Current Players Turn: {{ currentPlayer + 1}}</p>
+
+{% for playerIndex, player in players %}
+    <h2>Player {{ playerIndex + 1 }}'s Hand</h2>
+    <p>current players handvalue: {{handValues[playerIndex]}}</p>
+    <p>player {{ playerIndex + 1}} results: {{results[playerIndex]}}</p>
+    <p class="card-utf8">
+        {% for card in player.getCards() %}
+            <i class="{{ card.graphic() }}"></i>
+        {% endfor %}
+    </p>
+{% endfor %}
+
+<h2>Bank's Hand</h2>
+<p>current Bank handvalue: {{bankValue}}</p>
+<p class="card-utf8">
+    {% for card in bank %}
+        <i class="{{ card.graphic() }}"></i>
+    {% endfor %}
+</p>
+
+<h1>Deck of Cards</h1>
+<p class="card-utf8">
+    {% for card in cards %}
+        <i class="{{ card.graphic() }}"></i>
+    {% endfor %}
+</p>
+
+{% endblock %}
