@@ -61,6 +61,7 @@ class CardGame21Controller extends AbstractController
             'bankValue' => $gameService->calculateBankHandValue(),
             'currentPlayer' => $gameService->currentPlayer(),
             'gameFinished' => $gameService->isGameFinished(),
+            'cardsDealtBool' => $gameService->cardsDealt(),
         ]);
     }
 
@@ -78,6 +79,25 @@ class CardGame21Controller extends AbstractController
     //     return $this->redirectToRoute('game_play');
     // }
 
+    #[Route('/game/dealing', name: 'game_deal_card')]
+    public function drawDeal(SessionInterface $session): Response
+    {
+        /** @var Game21Service $gameService */
+        $gameService = $session->get('gameService');
+
+        $cardsDealtBool = $gameService->cardsDealt();
+
+        if ($cardsDealtBool['firstRoundDraw'] === false) {
+            $gameService->drawFirstRound();
+        } elseif ($cardsDealtBool['secondRoundDraw'] === false) {
+            $gameService->drawSecondRound();
+        }
+
+        // Update the session
+        $session->set('gameService', $gameService);
+
+        return $this->redirectToRoute('game_play');
+    }
 
 
     #[Route('/game/draw', name: 'game_draw_card')]

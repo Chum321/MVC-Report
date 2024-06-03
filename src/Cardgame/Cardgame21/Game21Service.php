@@ -16,6 +16,8 @@ class Game21Service
     private int $numPlayers;
     private bool $bankHasPlayed = false;
     private bool $gameFinished = false;
+    private bool $firstRoundDraw = false;
+    private bool $secondRoundDraw = false;
 
     /**
      * 
@@ -54,7 +56,36 @@ class Game21Service
         $this->numPlayers = count($this->players);
 
         // Deal the starting cards to players and the bank
-        $this->dealStartingCards();
+        // $this->dealStartingCards();
+    }
+
+    public function drawFirstRound(): void
+    {
+        // Deal the first card to each player and the bank
+        foreach ($this->players as $player) {
+            $player->drawCardFromDeck($this->deck);
+        }
+        $this->bank->drawCardFromDeck($this->deck);
+        $this->firstRoundDraw = true;
+    }
+
+    public function drawSecondRound(): void
+    {
+        // Deal the Secound card to each player and the bank
+        foreach ($this->players as $player) {
+            $player->drawCardFromDeck($this->deck);
+        }
+        $this->secondRoundDraw = true;
+    }
+
+    public function cardsDealt(): array
+    {
+        $cardsDealtBool = [
+            'firstRoundDraw' => $this->firstRoundDraw,
+            'secondRoundDraw' => $this->secondRoundDraw
+        ];
+
+        return $cardsDealtBool;
     }
 
     /**
