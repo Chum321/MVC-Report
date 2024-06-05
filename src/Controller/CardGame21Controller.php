@@ -197,6 +197,25 @@ class CardGame21Controller extends AbstractController
         return $this->redirectToRoute('game_landingpage');
     }
 
-    
+    #[Route('/game/remake', name: 'game_remake')]
+    public function remake(SessionInterface $session): Response
+    {
+        /** @var Game21Service $gameService */
+        $gameService = $session->get('gameService');
 
+        // Gets total player count
+        $numPlayers = $gameService->getPlayerCount();
+
+        // Remove gameService from the session variables
+        $session->remove('gameService');
+
+        // Makes a new gameService variable
+        $this->gameService->initializeGame($numPlayers);
+
+        $session->set('gameService', $this->gameService);
+        // $session->set('currentPlayer', 0); // Initialize current player index
+
+
+        return $this->redirectToRoute('game_play');
+    }
 }
