@@ -197,4 +197,6 @@ class CardGame21Controller extends AbstractController
         return $this->redirectToRoute('game_landingpage');
     }
 
+    
+
 }

@@ -113,4 +113,24 @@ class CardApiController extends AbstractController
         );
         return $response;
     }
+
+    #[Route('/api/game', name: 'api_game')]
+    public function gameStatus(SessionInterface $session): JsonResponse
+    {
+        /** @var Game21Service $gameService */
+        $gameService = $session->get('gameService');
+
+        if (!$gameService) {
+            return new JsonResponse(['error' => 'Game not initialized'], 400);
+        }
+
+        // Serialize the game state
+        $gameData = $gameService->jsonSerialize();
+
+        // Convert the serialized data to pretty-printed JSON
+        $jsonData = json_encode($gameData, JSON_PRETTY_PRINT);
+
+        // Return the pretty-printed JSON as a response
+        return new JsonResponse($jsonData, 200, [], true);  // The last parameter true tells Symfony to not re-encode the JSON data
+    }
 }

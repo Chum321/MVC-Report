@@ -7,7 +7,7 @@ use App\Cardgame\Card;
 use App\Cardgame\CardHand;
 use App\Cardgame\CardGraphic;
 
-class Game21Service
+class Game21Service implements \JsonSerializable
 {
     private DeckOfCards $deck;
     private array $players;
@@ -331,5 +331,15 @@ class Game21Service
     public function getPlayerCount(): int
     {
         return $this->numPlayers;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'totalPlayers' => $this->numPlayers,
+            'currentPlayer' => $this->currentPlayer,
+            'players' => $this->players,
+            'bank' => $this->bank
+        ];
     }
 }
