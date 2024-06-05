@@ -11,37 +11,29 @@
 </p>
 <a href="{{ path('game_start', {'players': 1}) }}" class="btn btn-primary">Start a New Game</a>
 
-<h1>Card game blackjack | landingpage</h1>
-<p>landingpage info and stuff</p>
-
-<h2>Links</h2>
-<ul>
-    <li><a href="{{ path('game_play') }}">Start</a></li>
-    <!-- Add more links as needed for other pages -->
-</ul>
-
 <h2>Documentation</h2>
 <p>
-    Spelet leder till en landningssida där man kan läsa spelregler och se dokumentation om spelet samt påbörja ett spel.
+    1. The game starts when the player clicks on the link "Start a New Game".
     <br>
-    Spelplanen visas och spelaren och banken har inte tagit några kort.
+    2. Alternetively you can add /start?players=# at the of the url with the "#" representing any number.
+    this will permit you to play with as many players as you want.
     <br>
-    Spelaren tar ett kort. Kortet visas.
+    3. From there the player(s) may chose to Reset the game if incorrect settings were inputed or play the game.
     <br>
-    Spelaren kan bestämma att stanna eller ta ytterligare ett kort.
+    4. To play the game the the player(s) need to first deal the first round of cards which will give all players and the bank one card.
     <br>
-    Om spelaren får över 21 vinner banken.
+    5. The player(s) will deal an additional round of cards again except this time the dealer does not recive a card.
     <br>
-    När spelaren stannar så är det bankens tur.
+    6. From this point each player will take their turn to draw as many additional cards they may want and when satesfied the player can chose to stand.
     <br>
-    Banken är inte medveten om spelarens korthand.
+    7. If the current players hand reaches 21 or more then their turn will be over and they will automaticaly stand.
     <br>
-    Banken plockar kort tills den stannar eller har över 21.
+    8. Repeat step 6 and 7 for all players.
     <br>
-    Banken vinner vid lika eller om banken har mer än spelaren.
+    9. When all players have played their round then the dealer will draw cards until they reach a hand value of 17 or more.
     <br>
-    Spelaren vinner om banken får över 21.
+    10. After the dealer has drawn their cards the player(s) are to press "Go to Post Game Screen" to see who won/lost/tied with the dealer.
     <br>
-    Därefter kan man påbörja en ny omgång.</p>
+</p>
 
 {% endblock %}

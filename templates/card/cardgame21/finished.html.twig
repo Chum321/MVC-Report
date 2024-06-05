@@ -5,24 +5,10 @@
 
 {% block body %}
 <h1>Card Game blackjack</h1>
-<a href="{{ path('game_reset') }}" class="btn btn-danger">Reset Game</a>
+<a href="{{ path('game_reset') }}" class="btn btn-danger">Back to cardgame landingpage</a>
 <br><br>
 
 
-
-{% if not gameFinished %}
-    {% if not cardsDealtBool['firstRoundDraw'] or not cardsDealtBool['secondRoundDraw'] %}
-    <p>dealing cards</p>
-    <a href="{{ path('game_deal_card') }}" class="btn btn-primary">Deal cards</a>
-    {% else %}
-        <p>game not marked as finnished</p>
-        <a href="{{ path('game_draw_card') }}" class="btn btn-primary">Draw a Card</a>
-        <a href="{{ path('game_stand') }}" class="btn btn-secondary">Stand</a>
-    {% endif %}
-{% else %}
-    <p>The game is finished!</p>
-    <a href="{{ path('game_done_screen') }}" class="btn btn-success">Go to Victory Screen</a>
-{% endif %}
 
 
 
