@@ -7,7 +7,7 @@
 <h1>Card Game blackjack</h1>
 <a href="{{ path('game_reset') }}" class="btn btn-danger">Back to cardgame landingpage</a>
 <br><br>
-<a href="{{ path('game_remake') }}" class="btn btn-danger">Play again</a>
+<a href="{{ path('game_play_again') }}" class="btn btn-danger">Play again</a>
 <br><br>
 
 
@@ -36,11 +36,11 @@
     {% endfor %}
 </p>
 
-<h1>Deck of Cards</h1>
+{# <h1>Deck of Cards</h1>
 <p class="card-utf8">
     {% for card in cards %}
         <i class="{{ card.graphic() }}"></i>
     {% endfor %}
-</p>
+</p> #}
 
 {% endblock %}

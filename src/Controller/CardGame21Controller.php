@@ -197,7 +197,7 @@ class CardGame21Controller extends AbstractController
         return $this->redirectToRoute('game_landingpage');
     }
 
-    #[Route('/game/remake', name: 'game_remake')]
+    #[Route('/game/play_again', name: 'game_play_again')]
     public function remake(SessionInterface $session): Response
     {
         /** @var Game21Service $gameService */
@@ -213,9 +213,17 @@ class CardGame21Controller extends AbstractController
         $this->gameService->initializeGame($numPlayers);
 
         $session->set('gameService', $this->gameService);
-        // $session->set('currentPlayer', 0); // Initialize current player index
-
 
         return $this->redirectToRoute('game_play');
+    }
+
+    #[Route('/game/doc', name: 'game_doc')]
+    public function gamedocument(): Response
+    {
+        $currentYear = date('Y');
+
+        return $this->render('card/cardgame21/doc.html.twig', [
+            'currentYear' => $currentYear,
+        ]);
     }
 }
