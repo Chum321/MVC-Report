@@ -30,7 +30,7 @@ class CardGame21Controller extends AbstractController
     #[Route('/game/start', name: 'game_start')]
     public function start(SessionInterface $session, Request $request): Response
     {
-        $numPlayers = (int) $request->query->get('players', 5); // Default to 1 player if not specified
+        $numPlayers = (int) $request->query->get('players', 1); // Default to 1 player if not specified
         $this->gameService->initializeGame($numPlayers);
 
         $session->set('gameService', $this->gameService);

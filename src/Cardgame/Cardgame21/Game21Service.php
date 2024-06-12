@@ -337,13 +337,20 @@ class Game21Service implements \JsonSerializable
     {
         $playersHandValues = $this->calculatePlayersHandValue();
         $banksHandValue = $this->calculateBankHandValue();
+        $bools = [
+            'bankHasPlayed' => $this->bankHasPlayed,
+            'gameFinished' => $this->gameFinished,
+            'firstRoundDraw' => $this->firstRoundDraw,
+            'secondRoundDraw' => $this->secondRoundDraw
+        ];
         return [
             'totalPlayers' => $this->numPlayers,
             'currentPlayer' => $this->currentPlayer,
             'banksHandValue' => $banksHandValue,
             'playersHandValues' => $playersHandValues,
             'players' => $this->players,
-            'bank' => $this->bank
+            'bank' => $this->bank,
+            'bools' => $bools
         ];
     }
 }

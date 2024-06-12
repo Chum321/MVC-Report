@@ -6,9 +6,202 @@
 {% block body %}
 <h1>Card Game blackjack Decoumentation</h1>
 
+<h2>Flowchart</h2>
+    <img src="{{ asset('img/MVC_Kmom03_BlackJack.png') }}" alt="Game Flowchart">
 
 <p>
-    blablabla text about documentation on the game blablabla
+    First i wanted to make the game 21 but partway through i found it simpler to just do blackjack
+    <br><br>
+    Pseudocode:
+    <br>
+    make class called “game21service”
+    <br>
+    inside the class game21service
+    <br>
+    {
+    <br>
+    make cardhand classes for each player and put them in a array called $players
+    <br>
+    make the bank a cardhand and put it in a $bank variable.
+    <br>
+    constructor makes a deck of cards and and shuffles it using the prebuilt deckofcards class.
+    <br>
+    make a method to initialize the game, call it initializeGame.
+    <br>
+    inside the method initializeGame
+    <br>
+    {
+    <br>
+    method initializeGame takes a int to indicate the number of players
+    <br>
+    The method also creates a deck of cards and shuffles it.
+    <br>
+    clear the players array in case it still has objects from previous use.
+    <br>
+    add a new cardhand for each player and make one for the bank as well.
+    <br>
+    take the count of the total players and make it a variable called $numPlayers
+    <br>
+    deal the starting cards to each player
+    <br>
+    }
+    <br><br>
+    make a function called dealStartingCards which will give each player two cards each
+    <br>
+    make a function called dealCardToPlayer which takes a int value to determine the current player
+    <br>
+    inside the function dealCardToPlayer
+    <br>
+    {
+    <br>
+    call a function to check player hand value
+    <br>
+    if the players handvalue is morethan or equal to 21 then call the function to stand and return null
+    <br>
+    else draw a card from the gameDeck and give it to the player using the cardhands built in draw function
+    <br>
+    return the current player
+    <br>
+    }
+    <br><br>
+    Make a function called dealCardToBank that makes the bank draw a card
+    <br>
+    Make several get methods depending on what private variable the game needs to make accessible
+    <br>
+    make a currentPlayer method which returns a int value on the current player whose turn it is
+    <br>
+    make a method called nextPlayer
+    <br>
+    inside method nextPlayer
+    <br>
+    {
+    <br>
+    increments the currentplayers variable +1.
+    <br>
+    if the currentplayer int value is 1 more than the total number of players then call the method dealersTurn
+    <br>
+    return currentPlayer variable
+    <br>
+    }
+    <br><br>
+    make method calculateCardValue to calculate the value of a specific given card
+    <br>
+    make function calculateHandValue which takes a cardhand object and returns a hand value for the point total
+    <br>
+    ?make a method which calculates all the players hands with the use of the previous two methods made?
+    <br>
+    make a method called calculateBankHandValue that does just that
+    <br>
+    make a method called dealerTurn which plays the dealers turn
+    <br>
+    inside the method dealerTurn
+    <br>
+    {
+    <br>
+    while the handvalue of the bank is less than 17 the dealer takes cards
+    <br>
+    }
+    <br><br>
+    make method determineWinners that calls the calculate handvalues on all the players and the bank.
+    the method then uses a bunch of if statements in a foreach loop to check if each player has won, lost or tied
+    <br>
+    return the results
+    } (end of the class game21service)
+    <br><br>
+    inside the cardgame21controller.php
+    <br>
+    {
+    <br>
+    make the game21service object inside a cardgame21controller
+    <br>
+    make route /game to host the landingpage for the game
+    <br>
+    make route /game/start that takes a int to check how many players
+    inside the route  game/start
+    <br>
+    {
+    <br>
+    call the method initializeGame with the provided int
+    <br>
+    set session variable ‘gameService’  to the object game21service
+    <br>
+    redirect the route to game_play
+    <br>
+    }
+    <br><br>
+    make route game/play
+    inside the route game/play
+    <br>
+    {
+    <br>
+    get the gameService object form the session
+    <br>
+    get the bank, players and handValues
+    <br>
+    return the gotten variables to the render inside play.html.twig
+    <br>
+    }
+    <br><br>
+    make the route game/draw
+    inside the route
+    <br>
+    {
+    <br>
+    get the gameService variable from session
+    <br>
+    use the gameService variable to deal a card to the current player
+    <br>
+    get the handValue of the player and check if the current player has equal to or more than 21 points.
+    <br>
+    if the player’s handValue is more than or equal to 21 then save the gameService object to the session and redirect to the route game_stand
+    <br>
+    else save the gameService object to the session and redirect to the route game_play
+    <br>
+    }
+    <br><br>
+    make the route is /game/stand
+    inside the route
+    <br>
+    {
+    <br>
+    get the gameService object
+    <br>
+    gameService object calls the nextPlayer method
+    save the gameService object to the session
+    <br>
+    }
+    <br><br>
+    make route /game/finished
+    inside the route
+    {
+    <br>
+    get the gameService object from the session
+    <br>
+    get information from gameService variable for display on the game victory screen
+    <br>
+    }
+    <br><br>
+    make the route /game/result
+    inside the route
+    <br>
+    {
+    <br>
+    get the gameService object
+    <br>
+    get the result using the method determineWinner on the gameService object
+    <br>
+    redirect route to game/finished route
+    <br>
+    }
+    <br><br>
+    make route /game/reset
+    <br>
+    remove the gameService object from the session
+    <br>
+    redirect to game_landingpage
+    <br>
+    }
+    <br><br>
 </p>
 
 
