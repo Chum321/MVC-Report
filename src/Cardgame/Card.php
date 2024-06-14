@@ -72,7 +72,12 @@ class Card implements \JsonSerializable
         return $this->rank . ' of ' . $this->suit;
     }
 
-    public function jsonSerialize()
+    /**
+     * Specify data which should be serialized to JSON.
+     *
+     * @return array<string, string> The data which can be serialized by json_encode.
+     */
+    public function jsonSerialize(): array
     {
         return [
             'suit' => $this->suit,

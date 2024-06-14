@@ -1,5 +1,7 @@
 <?php
+
 // src/Controller/CardGame21Controller.php
+
 namespace App\Controller;
 
 use App\Cardgame\Cardgame21\Game21Service;
@@ -65,20 +67,6 @@ class CardGame21Controller extends AbstractController
         ]);
     }
 
-    // EXPERIMENTAL
-
-    // #[Route('/game/draw/{player}', name: 'game_draw_card')]
-    // public function drawCard(SessionInterface $session, int $player): Response
-    // {
-        
-    //     $gameService = $session->get('gameService');
-    //     $gameService->dealCardToPlayer($player);
-
-    //     $session->set('gameService', $gameService);
-
-    //     return $this->redirectToRoute('game_play');
-    // }
-
     #[Route('/game/dealing', name: 'game_deal_card')]
     public function drawDeal(SessionInterface $session): Response
     {
@@ -110,7 +98,7 @@ class CardGame21Controller extends AbstractController
         $gameService->dealCardToPlayer($gameService->currentPlayer());
 
         // Gets the players
-        $playerArray = $gameService->getPlayers($gameService->currentPlayer());
+        $playerArray = $gameService->getPlayers();
 
         $allHandValues = $gameService->calculatePlayersHandValue();
 
@@ -171,7 +159,7 @@ class CardGame21Controller extends AbstractController
         /** @var Game21Service $gameService */
         $gameService = $session->get('gameService');
 
-        $result = $gameService->determineWinner();
+        $result = $gameService->determineWinners();
 
         return $this->render('card/cardgame21/result.html.twig', [
             'currentYear' => $currentYear,

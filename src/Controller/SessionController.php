@@ -25,11 +25,11 @@ class SessionController extends AbstractController
         $sessionData = $request->getSession()->all();
 
         // Serialize complex objects to JSON or other formats if necessary
-    foreach ($sessionData as $key => $value) {
-        if (is_object($value)) {
-            $sessionData[$key] = 'Object of class ' . get_class($value);
+        foreach ($sessionData as $key => $value) {
+            if (is_object($value)) {
+                $sessionData[$key] = 'Object of class ' . get_class($value);
+            }
         }
-    }
 
         dump($sessionData); // Dump the session data to check its content
 

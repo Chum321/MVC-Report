@@ -20,10 +20,10 @@ class Game21Service implements \JsonSerializable
     private bool $secondRoundDraw = false;
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function __construct(DeckOfCards $deck)
     {
@@ -34,10 +34,10 @@ class Game21Service implements \JsonSerializable
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function initializeGame(int $numPlayers): void
     {
@@ -89,10 +89,10 @@ class Game21Service implements \JsonSerializable
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     private function dealStartingCards(): void
     {
@@ -110,27 +110,27 @@ class Game21Service implements \JsonSerializable
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function dealCardToPlayer(int $playerIndex): ?Card
     {
         // Calculate the current hand value of the player
         $playerHandValue = $this->calculateHandValue($this->players[$playerIndex]);
 
-        if ($playerHandValue >= 21){
+        if ($playerHandValue >= 21) {
             return null;
         }
         return $this->players[$playerIndex]->drawCardFromDeck($this->deck);
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function dealCardToBank(): ?Card
     {
@@ -138,10 +138,10 @@ class Game21Service implements \JsonSerializable
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function getPlayerCards(int $playerIndex): array
     {
@@ -149,10 +149,10 @@ class Game21Service implements \JsonSerializable
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function getBankCards(): array
     {
@@ -160,10 +160,10 @@ class Game21Service implements \JsonSerializable
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function getPlayers(): array
     {
@@ -171,10 +171,10 @@ class Game21Service implements \JsonSerializable
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function getPlayer(int $playerIndex): array
     {
@@ -182,10 +182,10 @@ class Game21Service implements \JsonSerializable
     }
 
     /**
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
     */
     public function getDeck(): DeckOfCards
     {
@@ -194,9 +194,9 @@ class Game21Service implements \JsonSerializable
 
     /**
      * gets current player variable value
-     * 
-     * 
-     * 
+     *
+     *
+     *
     */
     public function currentPlayer(): int
     {
@@ -205,9 +205,9 @@ class Game21Service implements \JsonSerializable
 
     /**
      * increments current player variable by 1
-     * 
-     * 
-     * 
+     *
+     *
+     *
     */
     public function nextPlayer(): int
     {
@@ -224,9 +224,9 @@ class Game21Service implements \JsonSerializable
 
     /**
      * Calculates the value of a card
-     * 
-     * 
-     * 
+     *
+     *
+     *
     */
     public function calculateCardValue(Card $card): int
     {
@@ -244,9 +244,9 @@ class Game21Service implements \JsonSerializable
 
     /**
      * Calculates the value of a hand of cards
-     * 
-     * 
-     * 
+     *
+     *
+     *
     */
     public function calculateHandValue(CardHand $hand): int
     {
