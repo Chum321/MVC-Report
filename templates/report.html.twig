@@ -67,7 +67,27 @@
         </p>
 
     <h2 id="kmom03">Kmom03</h2>
-    <p>Text for Kmom03.</p>
+    <p>
+        Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?
+        <br><br>
+        Jag är inte direkt van vid användningen av psuedokod. Brukar bara använda det om det är specifierat i uppgiften. Samma sak med flödesdiagram. Men dom är båda extremt användbara, psuedokoden extra så. Har kunnat använda den som en mall. Gjorde kodnings delen av uppgiften mycket lättare.
+        <br><br><br>
+        Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?
+        <br><br>
+        Det första jag försökte göra var att göra spelet först för allt i uppgiften utspelar sig runt spelet. Jag är väldigt nöjd med hur spelet spelas mekaniskt. Något jag stör mig lite på är att alla får sina första kort samtidigt. Detta leder till att det inte blir lika mycket suspens när det kommer till vilka kort man kan få, dock var alternativet jag kom fram med inte den bästa lösningen. Det hade varit att användaren behöver klicka på samma knap för att dela ut kort som nu, men för varje individuel spelare.
+        <br><br>
+        När det kommer till förbättringspotential så kollar jag primärt på Game21Service classen. Den hade kunnat vara bättre om jag använde mig av dependency injection för decket och cardhand classerna. Det hade gett större frihet i framtiden att återanvända Game21Service mer flexibelt. En annan tanke jag fick medans jag skriver denna rapport hade varit om jag delade up funktionaliteten av Game21Service till traits för att ha funktionaliteten på standby för möjliga framtida kortspel.
+        <br><br><br>
+        Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?
+        <br><br>
+        Det är mykcet jag känner att jag inte förstår. Men jag känner att jag har väldigt bra koll eller åtminståne okej koll på det jag förstår. Mer specifikt om jag ber chatgpt om hjälp innom något specifikt så vill den att jag går in i en ymal fil någonstans och vad ymal filerna är för har jag ingen aning.
+        <br>
+        Men när det kommer till controllers, templatesen och php klasserna så har jag bra koll tycker jag. Dock har jag svårt att säga det för jag vet allt för väl att man inte vet vad man inte vet. Men som sakt utifrån det jag vet känner jag mig säker.
+        <br><br><br>
+        Vilken är din TIL för detta kmom?
+        <br><br>
+        Mer om JsonSerializable. Tydligen om man försöker Serializa ett objekt som är en del av en annan klass så kommer denns Serializable method att köras. Det använder jag i Game21Service's JsonSerializable method. När i den methoden försöker vi serializa players vilket är en array av cardhand objekt. Vilket då får cardhand JsonSerializable att köras. Det är logiskt att det funkar så och jag borde inte vara förvånad att det är så det funkar men det blev jag ändå.
+    </p>
 
     <h2 id="kmom04">Kmom04</h2>
     <p>Text for Kmom04.</p>

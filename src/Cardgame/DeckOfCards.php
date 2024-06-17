@@ -7,7 +7,7 @@ namespace App\Cardgame;
  *
  *
  */
-class DeckOfCards
+class DeckOfCards implements \JsonSerializable
 {
     protected array $cards = [];
 
@@ -51,5 +51,12 @@ class DeckOfCards
     public function setCards($newDeck): void
     {
         $this->cards = $newDeck;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'cards' => $this->cards,
+        ];
     }
 }

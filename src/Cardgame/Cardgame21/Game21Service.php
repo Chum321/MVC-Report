@@ -350,7 +350,8 @@ class Game21Service implements \JsonSerializable
             'playersHandValues' => $playersHandValues,
             'players' => $this->players,
             'bank' => $this->bank,
-            'bools' => $bools
+            'bools' => $bools,
+            'deck' => $this->deck
         ];
     }
 }
