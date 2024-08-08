@@ -28,7 +28,7 @@ class Game21Service implements \JsonSerializable
     public function __construct(DeckOfCards $deck)
     {
         $this->deck = $deck;
-        $this->deck->shuffle();
+        // $this->deck->shuffle();
         $this->players = [];
         $this->bank = new CardHand();
     }
@@ -44,6 +44,32 @@ class Game21Service implements \JsonSerializable
         // Create and shuffle the deck
         $this->deck = new DeckOfCards();
         $this->deck->shuffle();
+
+        // Clear the players array before initializing
+        $this->players = [];
+        // Adds players "cardhands" to the players array
+        for ($i = 0; $i < $numPlayers; $i++) {
+            $this->players[] = new CardHand();
+        }
+        $this->bank = new CardHand();
+
+        $this->numPlayers = count($this->players);
+
+        // Deal the starting cards to players and the bank
+        // $this->dealStartingCards();
+    }
+
+    /**
+     *
+     *
+     *
+     *
+    */
+    public function initializeGameNoShuffle(int $numPlayers): void
+    {
+        // Create and shuffle the deck
+        $this->deck = new DeckOfCards();
+        // $this->deck->shuffle();
 
         // Clear the players array before initializing
         $this->players = [];
