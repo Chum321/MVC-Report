@@ -13,7 +13,7 @@ class CardTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use necessary arguments.
      */
-    public function testCreateCard()
+    public function testCreateCard(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -28,7 +28,7 @@ class CardTest extends TestCase
      * Cunstruct object and verify that the getter and setter for rank works as expected
      * properties, use both arguments.
      */
-    public function testRank()
+    public function testRank(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -47,7 +47,7 @@ class CardTest extends TestCase
      * Cunstruct object and verify that the getter and setter for Suit works as expected
      * properties, use both arguments.
      */
-    public function testSuit()
+    public function testSuit(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -66,7 +66,7 @@ class CardTest extends TestCase
      * Cunstruct object and verify that the toString works as expected
      * properties, use both arguments.
      */
-    public function testToString()
+    public function testToString(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -81,7 +81,7 @@ class CardTest extends TestCase
      * Cunstruct object and verify that the jsonSerialize works as expected
      * properties, use both arguments.
      */
-    public function testJsonSerialize()
+    public function testJsonSerialize(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -94,6 +94,14 @@ class CardTest extends TestCase
         ]);
 
         $res = $card->jsonSerialize();
+
+        if ($json === false) {
+            $this->fail('json_encode failed for gameService');
+        }
+
+        if ($expectedJson === false) {
+            $this->fail('json_encode failed for gameService');
+        }
 
         $this->assertJsonStringEqualsJsonString($expectedJson, $json, 'Card JSON serialization is incorrect');
     }

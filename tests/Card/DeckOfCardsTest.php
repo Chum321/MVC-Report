@@ -12,7 +12,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Construct object and verify that the object is a object, use no arguments.
      */
-    public function testCreateDeckOfCards()
+    public function testCreateDeckOfCards(): void
     {
         $deck = new DeckOfCards();
         $this->assertIsObject($deck);
@@ -22,7 +22,7 @@ class DeckOfCardsTest extends TestCase
      * Construct object and verify that the methods
      * getCards and setCards work as intended, use no arguments.
      */
-    public function testGetAndSetCards()
+    public function testGetAndSetCards(): void
     {
         $deck = new DeckOfCards();
 
@@ -44,7 +44,7 @@ class DeckOfCardsTest extends TestCase
      * Construct object and verify that the method
      * shuffle work as intended, use no arguments.
      */
-    public function testShuffle()
+    public function testShuffle(): void
     {
         $deck = new DeckOfCards();
 
@@ -55,7 +55,7 @@ class DeckOfCardsTest extends TestCase
         $this->assertNotEquals($originalArrayOfCards, $shuffledArrayOfCards, 'Array has not changed after shuffling');
     }
 
-    public function testJsonSerialize()
+    public function testJsonSerialize(): void
     {
         // Deck to be tested on
         $deck = new DeckOfCards();
@@ -124,7 +124,15 @@ class DeckOfCardsTest extends TestCase
         // Serialize the CardHand instance
         $serializedArray = $deck->jsonSerialize();
         $actualJson = json_encode($serializedArray);
-        
+
+        if ($expectedJson === false) {
+            $this->fail('json_encode failed for expected JSON');
+        }
+
+        if ($actualJson === false) {
+            $this->fail('json_encode failed for gameService');
+        }
+
         // Assert that the serialized JSON matches the expected JSON
         $this->assertJsonStringEqualsJsonString($expectedJson, $actualJson, 'JSON serialization of CardHand does not match expected format');
     }

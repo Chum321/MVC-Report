@@ -13,7 +13,7 @@ class CardHandTest extends TestCase
      *
      *
      */
-    public function testAddAndGetCard()
+    public function testAddAndGetCard(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -34,7 +34,7 @@ class CardHandTest extends TestCase
      *
      *
      */
-    public function testDrawCardFromDeck()
+    public function testDrawCardFromDeck(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -61,7 +61,7 @@ class CardHandTest extends TestCase
         $this->assertNull($res);
     }
 
-    public function testJsonSerialize()
+    public function testJsonSerialize(): void
     {
         // Create sample cards
         $card1 = new Card('Hearts', 'Ace');
@@ -86,6 +86,14 @@ class CardHandTest extends TestCase
         // Serialize the CardHand instance
         $serializedArray = $hand->jsonSerialize();
         $actualJson = json_encode($serializedArray);
+
+        if ($actualJson === false) {
+            $this->fail('json_encode failed for gameService');
+        }
+
+        if ($expectedJson === false) {
+            $this->fail('json_encode failed for gameService');
+        }
         
         // Assert that the serialized JSON matches the expected JSON
         $this->assertJsonStringEqualsJsonString($expectedJson, $actualJson, 'JSON serialization of CardHand does not match expected format');

@@ -391,6 +391,8 @@ class Game21ServiceTest extends TestCase
         $gameService->dealerTurn();
         $dealersCards = $gameService->getBankCards();
 
+        $arrayBankValues = [];
+
         foreach ($dealersCards as $card) {
             $arrayBankValues[] = $gameService->calculateCardValue($card);
         }
@@ -519,6 +521,9 @@ class Game21ServiceTest extends TestCase
         $card = new Card($suit, $rank);
 
         $json = json_encode($gameService->jsonSerialize());
+        if ($json === false) {
+            $this->fail('json_encode failed for gameService');
+        }
         $expectedJson = json_encode([
             'bank' => [
                 'cards' => []
@@ -607,6 +612,10 @@ class Game21ServiceTest extends TestCase
             ],
             "totalPlayers" => 3
         ]);
+
+        if ($expectedJson === false) {
+            $this->fail('json_encode failed for expected JSON');
+        }
 
         $this->assertJsonStringEqualsJsonString($expectedJson, $json, 'gameService JSON serialization is incorrect');
     }

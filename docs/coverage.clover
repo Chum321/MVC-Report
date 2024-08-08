@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723116122">
-  <project timestamp="1723116122">
+<coverage generated="1723117284">
+  <project timestamp="1723117284">
     <file name="/home/tim/dbwebb-kurser/mvc/me/report/src/Cardgame/Card.php">
       <class name="App\Cardgame\Card" namespace="global">
         <metrics complexity="7" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="18" coveredelements="18"/>
@@ -136,9 +136,9 @@
       <line num="260" type="stmt" count="8"/>
       <line num="261" type="stmt" count="8"/>
       <line num="262" type="stmt" count="8"/>
-      <line num="263" type="stmt" count="3"/>
+      <line num="263" type="stmt" count="5"/>
       <line num="264" type="stmt" count="8"/>
-      <line num="265" type="stmt" count="4"/>
+      <line num="265" type="stmt" count="3"/>
       <line num="267" type="stmt" count="7"/>
       <line num="277" type="method" name="calculateHandValue" visibility="public" complexity="5" crap="5" count="9"/>
       <line num="279" type="stmt" count="9"/>
@@ -148,7 +148,7 @@
       <line num="284" type="stmt" count="7"/>
       <line num="285" type="stmt" count="7"/>
       <line num="287" type="stmt" count="7"/>
-      <line num="288" type="stmt" count="3"/>
+      <line num="288" type="stmt" count="2"/>
       <line num="292" type="stmt" count="9"/>
       <line num="293" type="stmt" count="1"/>
       <line num="294" type="stmt" count="1"/>

@@ -12,7 +12,7 @@ class CardGraphicTest extends TestCase
     /**
      * Construct object and verify that the object is a object, use no arguments.
      */
-    public function testCreateCardGraphic()
+    public function testCreateCardGraphic(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -23,7 +23,7 @@ class CardGraphicTest extends TestCase
     /**
      * Construct object and verify that the getGraphic method works as expected.
      */
-    public function testGetGraphic()
+    public function testGetGraphic(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -38,7 +38,7 @@ class CardGraphicTest extends TestCase
     /**
      * Construct object and verify that the __toString method works as expected.
      */
-    public function testToString()
+    public function testToString(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
@@ -53,7 +53,7 @@ class CardGraphicTest extends TestCase
     /**
      * Construct object and verify that the graphic method works as expected.
      */
-    public function testgraphic()
+    public function testgraphic(): void
     {
         $suit = 'Spades';
         $rank = 'Ace';
